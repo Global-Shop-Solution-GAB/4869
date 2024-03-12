@@ -1,0 +1,859 @@
+Program.Sub.ScreenSU.Start
+Gui.Form..Create
+Gui.Form..Size(20850,14370)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form..Caption("Last Cost vs Standard Cost")
+Gui.Form.gsD.Create(GsGridControl)
+Gui.Form.gsD.Size(16485,12465)
+Gui.Form.gsD.Position(4050,1035)
+Gui.Form.gsD.TabStop(True)
+Gui.Form.gsD.TabIndex(20)
+Gui.Form.cmdUpdate.Create(Button)
+Gui.Form.cmdUpdate.Size(1500,375)
+Gui.Form.cmdUpdate.Position(15780,570)
+Gui.Form.cmdUpdate.Caption("Update Cost")
+Gui.Form.cmdUpdate.Event(Click,cmdUpdate_Click)
+Gui.Form.cmdUpdate.TabStop(True)
+Gui.Form.cmdUpdate.TabIndex(17)
+Gui.Form.gsLoc.Create(GsGridControl)
+Gui.Form.gsLoc.Size(1830,9975)
+Gui.Form.gsLoc.Position(120,3525)
+Gui.Form.gsLoc.Event(RowCellClick,gsLoc_RowCellClick)
+Gui.Form.gsLoc.TabStop(True)
+Gui.Form.gsLoc.TabIndex(21)
+Gui.Form.gsPL.Create(GsGridControl)
+Gui.Form.gsPL.Size(1830,9975)
+Gui.Form.gsPL.Position(2085,3525)
+Gui.Form.gsPL.Event(RowCellClick,gsPL_RowCellClick)
+Gui.Form.gsPL.TabStop(True)
+Gui.Form.gsPL.TabIndex(22)
+Gui.Form.txtFromLoc.Create(TextBox,"",True,720,300,0,120,1050,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtFromLoc.TabStop(True)
+Gui.Form.txtFromLoc.TabIndex(2)
+Gui.Form.txtFromLoc.MaxLength(2)
+Gui.Form.lbl1.Create(Label,"From",True,705,255,0,120,825,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl2.Create(Label,"Location",True,750,255,0,120,120,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl3.Create(Label,"Product Line",True,1410,255,0,2085,120,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl4.Create(Label,"From",True,705,255,0,2085,825,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtFromPL.Create(TextBox,"",True,720,300,0,2085,1050,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtFromPL.TabStop(True)
+Gui.Form.txtFromPL.TabIndex(9)
+Gui.Form.txtFromPL.MaxLength(2)
+Gui.Form.txtToLoc.Create(TextBox,"",True,720,300,0,120,1740,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtToLoc.TabStop(True)
+Gui.Form.txtToLoc.TabIndex(4)
+Gui.Form.txtToLoc.MaxLength(2)
+Gui.Form.txtToPL.Create(TextBox,"",True,720,300,0,2085,1740,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtToPL.TabStop(True)
+Gui.Form.txtToPL.TabIndex(11)
+Gui.Form.txtToPL.MaxLength(2)
+Gui.Form.lbl5.Create(Label,"To",True,540,255,0,120,1515,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl6.Create(Label,"To",True,540,255,0,2085,1515,True,0,"Arial",8,-2147483633,0)
+Gui.Form.cmdAddLoc.Create(Button)
+Gui.Form.cmdAddLoc.Size(720,375)
+Gui.Form.cmdAddLoc.Position(120,2205)
+Gui.Form.cmdAddLoc.TabStop(True)
+Gui.Form.cmdAddLoc.TabIndex(6)
+Gui.Form.cmdAddLoc.Caption("Add")
+Gui.Form.cmdAddLoc.Event(Click,cmdAddLoc_Click)
+Gui.Form.cmdAddPL.Create(Button)
+Gui.Form.cmdAddPL.Size(720,375)
+Gui.Form.cmdAddPL.Position(2085,2205)
+Gui.Form.cmdAddPL.TabStop(True)
+Gui.Form.cmdAddPL.TabIndex(13)
+Gui.Form.cmdAddPL.Caption("Add")
+Gui.Form.cmdAddPL.Event(Click,cmdAddPL_Click)
+Gui.Form.cmdPopulate.Create(Button)
+Gui.Form.cmdPopulate.Size(2940,375)
+Gui.Form.cmdPopulate.Position(4035,570)
+Gui.Form.cmdPopulate.TabStop(True)
+Gui.Form.cmdPopulate.TabIndex(15)
+Gui.Form.cmdPopulate.Caption("Filter by Location and Product Line")
+Gui.Form.cmdPopulate.Event(Click,cmdPopulate_Click)
+Gui.Form.cmdUnCheckAll.Create(Button)
+Gui.Form.cmdUnCheckAll.Size(1500,375)
+Gui.Form.cmdUnCheckAll.Position(19035,570)
+Gui.Form.cmdUnCheckAll.TabStop(True)
+Gui.Form.cmdUnCheckAll.TabIndex(19)
+Gui.Form.cmdUnCheckAll.Caption("Uncheck All")
+Gui.Form.cmdUnCheckAll.Event(Click,cmdUnCheckAll_Click)
+Gui.Form.cmdCheckAll.Create(Button)
+Gui.Form.cmdCheckAll.Size(1500,375)
+Gui.Form.cmdCheckAll.Position(17430,570)
+Gui.Form.cmdCheckAll.TabStop(True)
+Gui.Form.cmdCheckAll.TabIndex(18)
+Gui.Form.cmdCheckAll.Caption("Check All")
+Gui.Form.cmdCheckAll.Event(Click,cmdCheckAll_Click)
+Gui.Form.cmdFromLoc.Create(Button)
+Gui.Form.cmdFromLoc.Size(645,375)
+Gui.Form.cmdFromLoc.Position(960,1020)
+Gui.Form.cmdFromLoc.TabStop(True)
+Gui.Form.cmdFromLoc.TabIndex(3)
+Gui.Form.cmdFromLoc.Caption("^")
+Gui.Form.cmdFromLoc.Event(Click,cmdFromLoc_Click)
+Gui.Form.cmdToLoc.Create(Button)
+Gui.Form.cmdToLoc.Size(645,375)
+Gui.Form.cmdToLoc.Position(960,1710)
+Gui.Form.cmdToLoc.TabStop(True)
+Gui.Form.cmdToLoc.TabIndex(5)
+Gui.Form.cmdToLoc.Caption("^")
+Gui.Form.cmdToLoc.Event(Click,cmdToLoc_Click)
+Gui.Form.cmdFromPL.Create(Button)
+Gui.Form.cmdFromPL.Size(645,375)
+Gui.Form.cmdFromPL.Position(2955,1020)
+Gui.Form.cmdFromPL.TabStop(True)
+Gui.Form.cmdFromPL.TabIndex(10)
+Gui.Form.cmdFromPL.Caption("^")
+Gui.Form.cmdFromPL.Event(Click,cmdFromPL_Click)
+Gui.Form.cmdToPL.Create(Button)
+Gui.Form.cmdToPL.Size(645,375)
+Gui.Form.cmdToPL.Position(2955,1710)
+Gui.Form.cmdToPL.TabStop(True)
+Gui.Form.cmdToPL.TabIndex(12)
+Gui.Form.cmdToPL.Caption("^")
+Gui.Form.cmdToPL.Event(Click,cmdToPL_Click)
+Gui.Form.cmdOriginal.Create(Button)
+Gui.Form.cmdOriginal.Size(945,375)
+Gui.Form.cmdOriginal.Position(4035,90)
+Gui.Form.cmdOriginal.TabStop(True)
+Gui.Form.cmdOriginal.TabIndex(16)
+Gui.Form.cmdOriginal.Caption("Original")
+Gui.Form.cmdOriginal.Event(Click,cmdOriginal_Click)
+Gui.Form.cmdClearLOC.Create(Button)
+Gui.Form.cmdClearLOC.Size(1365,375)
+Gui.Form.cmdClearLOC.Position(120,3045)
+Gui.Form.cmdClearLOC.TabStop(True)
+Gui.Form.cmdClearLOC.TabIndex(7)
+Gui.Form.cmdClearLOC.Caption("Clear Location")
+Gui.Form.cmdClearLOC.Event(Click,cmdClearLOC_Click)
+Gui.Form.cmdClearPL.Create(Button)
+Gui.Form.cmdClearPL.Size(1560,375)
+Gui.Form.cmdClearPL.Position(2085,3045)
+Gui.Form.cmdClearPL.TabStop(True)
+Gui.Form.cmdClearPL.TabIndex(14)
+Gui.Form.cmdClearPL.Caption("Clear Product Line")
+Gui.Form.cmdClearPL.Event(Click,cmdClearPL_Click)
+Gui.Form.cmdAddAllLoc.Create(Button)
+Gui.Form.cmdAddAllLoc.Size(840,375)
+Gui.Form.cmdAddAllLoc.Position(105,330)
+Gui.Form.cmdAddAllLoc.TabStop(True)
+Gui.Form.cmdAddAllLoc.TabIndex(1)
+Gui.Form.cmdAddAllLoc.Caption("Add All")
+Gui.Form.cmdAddAllLoc.Event(Click,cmdAddAllLoc_Click)
+Gui.Form.cmdAddAllPL.Create(Button)
+Gui.Form.cmdAddAllPL.Size(840,375)
+Gui.Form.cmdAddAllPL.Position(2055,330)
+Gui.Form.cmdAddAllPL.TabStop(True)
+Gui.Form.cmdAddAllPL.TabIndex(8)
+Gui.Form.cmdAddAllPL.Caption("Add All")
+Gui.Form.cmdAddAllPL.Event(Click,cmdAddAllPL_Click)
+Gui.Form.proBar.Create(ProgressBar)
+Gui.Form.proBar.Visible(False)
+Gui.Form.proBar.Size(20445,255)
+Gui.Form.proBar.Position(120,13590)
+Gui.Form.cmdExport.Create(Button)
+Gui.Form.cmdExport.Size(825,375)
+Gui.Form.cmdExport.Position(7140,570)
+Gui.Form.cmdExport.TabStop(True)
+Gui.Form.cmdExport.TabIndex(17)
+Gui.Form.cmdExport.Caption("Export")
+Gui.Form.cmdExport.Event(Click,cmdExport_Click)
+Gui.Form.lbl7.Create(Label,"Rows",True,585,255,0,8130,660,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lblRows.Create(Label,"",True,990,255,0,8805,660,True,1,"Arial",8,-2147483636,1)
+Gui.Form.lblRows.BorderStyle(2)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+v.Global..BulkDeclareString(sLoc,sPL)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'BN, Feb 8, 2018
+'This project is run from a custom menu item. It is an extension of the core report (Purchasing > Transactions > Last Cost vs. Standard Cost).
+'It will show the same selection screen as the core one. User will input the Variance value (do not check the Process Update).
+'Additional features compared to the core report:
+'Filter the Parts by Location and Product Line
+'Select the Parts that we want to update Cost
+'Input the value (PO Receipt Cost column) that we want to update to the Material cost element of the standard cost of the Part
+'Export to Excel/Csv
+
+F.Intrinsic.Control.SetErrorHandler("Main")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sSQL)
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass,15000)
+
+'Launch core report process which will populate the BI_BI_Last_STNDRD
+F.Intrinsic.Task.LaunchGSSsync("PUR306","-c","")
+
+'Get copy the BI_BI_Last_STNDRD and save to GCG_4869_COPY. This will make sure that if users run concurrently the Core report (same process but with the core menu item), it will not affect what they have in the first run with the Custom program
+f.Intrinsic.String.Build("Select Sequence,PART_NUMBER, LOCN, STD_COST, ORDER_QTY, RECVD_COST, RECVD_QTY, VARIANCE, RECVD_DATE, PO_NUMBER, RECEIVER_NUMBER,Part_Number + '-' + LOCN as PartLocn,'' as PL from V_BI_Last_STNDRD where TRMNL = '{0}' order by sequence",v.Caller.Terminal,v.Local.sSQL)
+f.Data.DataTable.CreateFromSQL("Copy","con",v.Local.sSQL,True)
+f.Data.Dictionary.CreateFromSQL("PLDict","con","Select Part + '-' + Location as PartLocn, Product_Line from Inventory_Mstr")
+f.Data.Dictionary.SetDefaultReturn("PLDict","")
+f.Data.DataTable.FillFromDictionary("Copy","PLDict","PartLocn","PL")
+f.Data.Dictionary.Close("PLDict")
+f.ODBC.Connection!con.Execute("Delete from GCG_4869_COPY")
+F.Data.DataTable.SaveToDB("Copy","con","GCG_4869_COPY","",128)
+
+'Load the dashboard
+f.Intrinsic.Control.CallSub("Create_Table_Location")
+f.Intrinsic.Control.CallSub("Create_Table_Product_Line")
+f.Intrinsic.Control.CallSub("Create_Table_D","sSQL","Select PART_NUMBER, LOCN, STD_COST, ORDER_QTY, RECVD_COST, RECVD_QTY, VARIANCE, RECVD_DATE, PO_NUMBER, RECEIVER_NUMBER,PartLocn,PL from GCG_4869_COPY order by sequence")
+gui.Form..Show
+gui.Form..AlwaysOnTop(True)
+gui.Form..AlwaysOnTop(False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.Form_UnLoad.Start
+F.Intrinsic.Control.SetErrorHandler("Form_UnLoad")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Form_UnLoad")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Create_Table_Location.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Intrinsic.Control.If(v.DataTable.LOC.Exists)
+	f.Data.DataTable.Close("LOC")
+f.Intrinsic.Control.EndIf
+
+f.Data.DataTable.Create("LOC",True)
+f.Data.DataTable.AddColumn("LOC","Loc","String","")
+f.Data.DataTable.AddColumn("LOC","Delete","String","Delete")
+gui.Form.gsLoc.AddGridviewFromDatatable("GVLoc","LOC")
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsLoc","GV","GVLoc","sInputColumns","Delete","sProperty","For_RowCellClick")
+gui.Form.gsLoc.MainView("GVLoc")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Create_Table_Location.End
+
+Program.Sub.Create_Table_Product_Line.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Intrinsic.Control.If(v.DataTable.PL.Exists)
+	f.Data.DataTable.Close("PL")
+f.Intrinsic.Control.EndIf
+
+f.Data.DataTable.Create("PL",True)
+f.Data.DataTable.AddColumn("PL","PL","String","")
+f.Data.DataTable.AddColumn("PL","Delete","String","Delete")
+gui.Form.gsPL.AddGridviewFromDatatable("GVPL","PL")
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsPL","GV","GVPL","sInputColumns","Delete","sProperty","For_RowCellClick")
+gui.Form.gsPL.MainView("GVPL")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Create_Table_Product_Line.End
+
+
+Program.Sub.Create_Table_D.Start
+F.Intrinsic.Control.SetErrorHandler("Create_Table_D")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sSQL)GCG_C
+
+'Table D is the main table displaying the underline Part records. The table is populated based on the SQL which is narrowed down by Location and Product Line.
+f.Intrinsic.Control.If(v.DataTable.D.Exists)
+	f.Data.DataTable.Close("D")
+f.Intrinsic.Control.EndIf
+F.Data.DataTable.CreateFromSQL("D","con",v.Args.sSQL,True)
+f.Data.DataTable.AddColumn("D","Update","Boolean","False")
+gui.Form.gsD.AddGridviewFromDataTable("GV","D")
+f.Intrinsic.Control.CallSub("FormatGrid_Table_D")
+gui.Form.gsD.MainView("GV")
+gui.Form.lblRows.Text(v.DataTable.D.RowCount)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Create_Table_D")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Create_Table_D.End
+
+Program.Sub.FormatGrid_Table_D.Start
+F.Intrinsic.Control.SetErrorHandler("FormatGrid_Table_D")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String)
+
+gui.Form.gsD.SuspendLayout()
+gui.Form.gsD.SetGridViewProperty("GV","AllowSort",True)
+gui.Form.gsD.SetGridViewProperty("GV","AllowFilter",True)
+gui.Form.gsD.SetGridViewProperty("GV","Enableappearanceoddrow",True)
+gui.Form.gsD.SetGridViewProperty("GV","OptionsFindAlwaysVisible",True)
+gui.Form.gsD.SetGridViewProperty("GV","OptionsViewShowAutoFilterRow",True)
+'Width	
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","LOCN,PL","sProperty","Width","sWidth","30")
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","PO_NUMBER,RECEIVER_NUMBER","sProperty","Width","sWidth","50")
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","VARIANCE","sProperty","Width","sWidth","80")
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","STD_COST,ORDER_QTY,RECVD_COST,RECVD_QTY","sProperty","Width","sWidth","130")	
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","PART_NUMBER","sProperty","Width","sWidth","150")
+'Editable
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","RECVD_COST,UPDATE","sProperty","Editable")
+'Invisible
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","PartLocn","sProperty","Invisible")
+'Visible Index
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","PART_NUMBER,LOCN,PL,STD_COST,ORDER_QTY,RECVD_COST,RECVD_QTY,VARIANCE,RECVD_DATE,PO_NUMBER,RECEIVER_NUMBER,UPDATE","sProperty","VisibleIndex")
+'Caption
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","PART_NUMBER@!@Part,STD_COST@!@Inventory Standard Cost,ORDER_QTY@!@Order Quantity,RECVD_COST@!@PO Receipt Cost,RECVD_QTY@!@PO Receipt Quantity,VARIANCE@!@Variance Pct,RECVD_DATE@!@Receipt Date,PO_NUMBER@!@PO,RECEIVER_NUMBER@!@Receiver,LOCN@!@LOC","sProperty","Caption")
+'Header far for numeric
+f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsD","GV","GV","sInputColumns","STD_COST,ORDER_QTY,RECVD_COST,RECVD_QTY,VARIANCE","sProperty","HeaderAllign_Far")
+'Display Date
+gui.Form.gsD.SetColumnProperty("GV","RECVD_DATE","DisplayCustomDatetime","d")
+'Display numeric
+gui.Form.gsD.SetColumnProperty("GV","VARIANCE","DisplayCustomNumeric","#,###,###,##0.00")
+gui.Form.gsD.ResumeLayout()
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("FormatGrid_Table_D")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.FormatGrid_Table_D.End
+
+Program.Sub.FormatBulk.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local..BulkDeclareString(sError,sColumns,sHold)
+v.Local..BulkDeclareLong(iCnt)
+
+f.Intrinsic.String.Split(v.Args.sInputColumns,",",v.Local.sColumns)
+f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sColumns.UBound,1)
+	F.Intrinsic.Control.SelectCase(v.Args.sProperty)
+		F.Intrinsic.Control.Case("Width")
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"MinWidth",v.Args.sWidth)
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"MaxWidth",v.Args.sWidth)	
+		F.Intrinsic.Control.Case("Invisible")
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"Visible",False)
+		F.Intrinsic.Control.Case("VisibleIndex")
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"VisibleIndex",v.Local.iCnt)
+		F.Intrinsic.Control.Case("Caption")
+			f.Intrinsic.String.Split(v.Local.sColumns(v.Local.iCnt),"@!@",v.Local.sHold)
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sHold(0),"Caption",v.Local.sHold(1))
+		F.Intrinsic.Control.Case("HeaderAllign_Far")
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"HeaderHAlignment","Far")
+		F.Intrinsic.Control.Case("Editable")		
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"AllowEdit","True")
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"ReadOnly","False")
+		F.Intrinsic.Control.Case("For_RowCellClick")
+			gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"AllowEdit","False")
+			gui.From.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"ReadOnly","True")
+	F.Intrinsic.Control.EndSelect	
+f.Intrinsic.Control.Next(v.Local.iCnt)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.FormatBulk.End
+
+Program.Sub.cmdUpdate_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sHold,sSQL)
+Variable.Local..BulkDeclareString(sDateYYYYMMDD,sDateYYYYMMDDNoHyphen,sDateMMDDYY,sDateYYMMDD,sMM,sYY,sHHMMSS)
+Variable.Local..BulkDeclareString(sQty_OnHand,sAMT_Price,sAmt_ALT_COST)
+Variable.Local..BulkDeclareString(sOldMatl,sOldLabor,sOldOvhd,sOldOuts,sOldFreight,sOldOth,sOldInvCost_Unit,sNewMatl)
+Variable.Local..BulkDeclareFloat(fNewInvCost_Unit,fDifMatl_Unit,fDifCost_For_All_Qty)
+v.Local..BulkDeclareLong(i,iIndexUbound)
+
+
+'Format all the dates
+f.Intrinsic.String.Format(v.Ambient.Date,"YYYY-MM-DD",v.Local.sDateYYYYMMDD)
+f.Intrinsic.String.Format(v.Ambient.Date,"YYMMDD",v.Local.sDateYYMMDD)
+f.Intrinsic.String.Format(v.Ambient.Date,"MMDDYY",v.Local.sDateMMDDYY)
+f.Intrinsic.String.Format(v.Ambient.Date,"YYYYMMDD",v.Local.sDateYYYYMMDDNoHyphen)
+f.Intrinsic.String.Mid(v.Local.sDateYYYYMMDD,6,2,v.Local.sMM)
+f.Intrinsic.String.Mid(v.Local.sDateYYYYMMDD,3,2,v.Local.sYY)
+
+'Load the records to be updated the cost
+gui.Form.proBar.Visible(True)
+f.Intrinsic.Control.If(V.DataView.D!UDV.Exists)
+	F.Data.DataView.Close("D","UDV")
+f.Intrinsic.Control.EndIf
+F.Data.DataView.Create("D","UDV",22,"Update = True","")
+v.Local.iIndexUBound.set(V.DataView.D!UDV.RowCount--)
+f.Intrinsic.Control.If(v.Local.iIndexUBound,=,-1)
+	f.Intrinsic.ui.Msgbox("Please select check the rows to update","No rows checked")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+'Start processing
+f.Intrinsic.UI.InvokeWaitDialog("Processing...")
+gui.Form.proBar.Max(V.DataView.D!UDV.RowCount)
+f.Intrinsic.Control.For(v.Local.i,0,v.Local.iIndexUBound,1)
+	gui.Form.proBar.Value(V.Local.i)
+	
+	'Get the current Qty_Onhand,AMT_Price,amt_ALT_COST from Inventory_Mstr
+	f.Intrinsic.String.Build("Select Qty_Onhand,AMT_Price,amt_ALT_COST from Inventory_Mstr where Part = '{0}' and Location = '{1}'",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sSQL)
+	f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL,v.Local.sHold)
+	f.Intrinsic.Control.If(v.Local.sHold,<>,"")
+		f.Intrinsic.String.Split(v.Local.sHold,"*!*",v.Local.sHold)
+		v.Local.sQty_OnHand.Set(v.Local.sHold(0))
+		v.Local.sAMT_Price.Set(v.Local.sHold(1))
+		v.Local.sAmt_ALT_COST.Set(v.Local.sHold(2))
+	f.Intrinsic.Control.Else
+		f.Intrinsic.string.Build("No Part '{0}' found in Inventory_Mstr, Update terminated at this part.",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,v.Local.sHold)
+		f.Intrinsic.UI.Msgbox(v.Local.sHold,"No Part found")
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf
+	
+	'Get the old cost elements from Inventory_Cost
+	f.Intrinsic.String.Build("Select Matl,Labor,Ovhd,Outs,Freight,Oth,Cost from Inventory_Cost where Part = '{0}' and Locn = '{1}'",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sSQL)
+	f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL,v.Local.sHold)
+	f.Intrinsic.Control.If(v.Local.sHold,<>,"")
+		f.Intrinsic.String.Split(v.Local.sHold,"*!*",v.Local.sHold)
+		v.Local.sOldMatl.Set(v.Local.sHold(0))
+		v.Local.sOldLabor.Set(v.Local.sHold(1))
+		v.Local.sOldOvhd.Set(v.Local.sHold(2))
+		v.Local.sOldOuts.Set(v.Local.sHold(3))
+		v.Local.sOldFreight.Set(v.Local.sHold(4))
+		v.Local.sOldOth.Set(v.Local.sHold(5))
+		v.Local.sOldInvCost_Unit.Set(v.Local.sHold(6))
+	f.Intrinsic.Control.Else	
+		f.Intrinsic.string.Build("No Part '{0}' found in Inventory_Mstr, Update terminated at this part.",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,v.Local.sHold)
+		f.Intrinsic.UI.Msgbox(v.Local.sHold,"No Part found")
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf
+	
+	'Prepare the new cost elements
+	v.Local.sNewMatl.Set(V.DataView.D!UDV(v.Local.i).RECVD_COST!FieldValString)
+	f.Intrinsic.Math.Sub(v.Local.sNewMatl,v.Local.sOldMatl,v.Local.fDifMatl_Unit)
+	f.Intrinsic.Math.Mult(v.Local.fDifMatl_Unit,v.Local.sQty_OnHand,v.Local.fDifCost_For_All_Qty)
+	f.Intrinsic.Math.Add(v.Local.fDifMatl_Unit,v.Local.sOldInvCost_Unit,v.Local.fNewInvCost_Unit)
+		
+	'Update Inventory_Cost	
+	f.Intrinsic.String.Build("Update Inventory_Cost set Matl = {0}, CHG_DATE = '{1}', CHG_TIME = Now(), CHG_BY = '{2}', CHG_PGM = 'GCG_4869' where Part = '{3}' and Locn = '{4}'",V.DataView.D!UDV(v.Local.i).Recvd_Cost!FieldValFloat,v.Local.sDateYYYYMMDD,v.Caller.User,V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)
+	f.Intrinsic.String.Build("Update Inventory_Cost set Cost = Matl + Labor + Ovhd + Outs + Freight + Oth where Part = '{0}' and Locn = '{1}'",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)	
+	
+	'Update Inventory_Mstr.AMT_Cost = New Unit Cost
+	f.Intrinsic.String.Build("Update Inventory_MSTR set AMT_Cost = {0} where Part = '{1}' and Location = '{2}'",v.Local.fNewInvCost_Unit,V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)
+	
+	'Format the time preparing for updating the Inventory_Hist, Inventory_Audit, ALT_COST_HIST
+	f.Intrinsic.String.Format(v.Ambient.Now,"HhNnSs",v.Local.sHHMMSS)
+	f.Intrinsic.String.Build("{0}00",v.Local.sHHMMSS,v.Local.sHHMMSS)
+
+	'Update Inventory_Hist
+	f.Intrinsic.String.Build("Insert into Inventory_Hist (DATE_ACCT_YR, DATE_ACCT_MO, PART, LOCATION, DATE_HISTORY, INV_HIST_TIME, CODE_TRANSACTION, TRANSACTION_DESC, NEW_ONHAND, OLD_ONHAND, OLD_INV_COST, NEW_INV_COST, QUANTITY, COST, SEQ, PRODUCT_LINE, DATE_ACTION, PROGRAM_A, IGNORE_FOR_USAGE, USERID, COST_MATERIAL, COST_LABOR, COST_OVERHEAD, OUTS_COST, FREIGHT_COST, OTHER_COST, MATL_VAR, LABR_VAR, OVHD_VAR, OUTS_VAR, FRGT_VAR, OTH_VAR, OLD_MATL, OLD_LABR, OLD_OVHD, OLD_OUTS, OLD_FRGT, OLD_OTH, NEW_MATL, NEW_LABR, NEW_OVHD, NEW_OUTS, NEW_FRGT, NEW_OTH, COST_NOT_UPD, T10_FRGT, DTL_KEY_SEQ) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9},{10},{11},{12},{13},'{14}','{15}','{16}','{17}',{18},'{19}',{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45}, {46})",v.Local.sYY,v.Local.sMM,V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sDateYYMMDD,v.Local.sHHMMSS,"P18","VALUE ONLY",v.Local.sQty_OnHand,v.Local.sQty_OnHand,v.Local.sOldInvCost_Unit,v.Local.fNewInvCost_Unit,0,v.Local.fDifCost_For_All_Qty,"000000",V.DataView.D!UDV(v.Local.i).PL!FieldValString,V.Local.sDateMMDDYY,"GCG_4869",0,v.Caller.User,v.Local.fDifMatl_Unit,0,0,0,0,0,0,0,0,0,0,0,v.Local.sOldMatl,v.Local.sOldLabor,v.Local.sOldOvhd,v.Local.sOldOuts,v.Local.sOldFreight,v.Local.sOldOth,v.Local.sNewMatl,v.Local.sOldLabor,v.Local.sOldOvhd,v.Local.sOldOuts,v.Local.sOldFreight,v.Local.sOldOth,0,0,0,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)
+	
+	'Update Inventory_Audit
+	f.Intrinsic.String.Build("Insert into Inventory_Audit (PART, LOCATION, DATE_AUDIT, AUDIT_TIME, CODE_TRANSACTION, REFERENCE_1, NEW_ONHAND, OLD_ONHAND, OLD_INV_COST, NEW_INV_COST, QUANTITY, COST, JOB_SEQ, PRODUCT_LINE, DATE_ACTION, AUDIT_PROGRAM, IGNORE_FOR_USAGE, AUDIT_USER, MATL_COST, LABOR_COST, OVERHEAD_COST, OUTSIDE_COST, FREIGHT_COST, OTHER_COST, MATL_VAR, LABOR_VAR, OVERHEAD_VAR, OUTS_VAR, FRGT_VAR, OTH_VAR, OLD_MATL, OLD_LABR, OLD_OVHD, OLD_OUTS, OLD_FREIGHT, OLD_OTHER, NEW_MATL, NEW_LABR, NEW_OVHD, NEW_OUTS, NEW_FREIGHT, NEW_OTHER, COST_NOT_UPDATED, DTL_KEY_SEQ, T10_FRGT) values ('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},{8},{9},{10},{11},'{12}','{13}','{14}','{15}',{16},'{17}',{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44})",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sDateYYMMDD,v.Local.sHHMMSS,"P18","VALUE ONLY",v.Local.sQty_OnHand,v.Local.sQty_OnHand,v.Local.sOldInvCost_Unit,v.Local.fNewInvCost_Unit,0,v.Local.fDifCost_For_All_Qty,"000000",V.DataView.D!UDV(v.Local.i).PL!FieldValString,V.Local.sDateMMDDYY,"GCG_4869",0,v.Caller.User,v.Local.fDifMatl_Unit,0,0,0,0,0,0,0,0,0,0,0,v.Local.sOldMatl,v.Local.sOldLabor,v.Local.sOldOvhd,v.Local.sOldOuts,v.Local.sOldFreight,v.Local.sOldOth,v.Local.sNewMatl,v.Local.sOldLabor,v.Local.sOldOvhd,v.Local.sOldOuts,v.Local.sOldFreight,v.Local.sOldOth,0,0,0,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)
+	
+	'Update the ALT_COST_HIST
+	f.Intrinsic.String.Build("Insert into Alt_Cost_Hist (PART, LOCN, DATE_CHG, TIME_CHG, ALT_COST, PROGRAM, HST_USER, PRICE, COST, VAL_CHGD) values ('{0}','{1}','{2}','{3}',{4},'{5}','{6}',{7},{8},{9})",V.DataView.D!UDV(v.Local.i).Part_Number!FieldValString,V.DataView.D!UDV(v.Local.i).Locn!FieldValString,v.Local.sDateYYYYMMDDNoHyphen,v.Local.sHHMMSS,v.Local.sAmt_ALT_COST,"GCG_4869",v.Caller.User,v.Local.sAMT_Price,Variable.Local.fNewInvCost_Unit,2,v.Local.sSQL)
+	f.ODBC.Connection!con.Execute(v.Local.sSQL)	
+
+f.Intrinsic.Control.Next(v.Local.i)
+
+gui.Form.proBar.Visible(False)
+F.Data.DataView.Close("D","UDV")
+f.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.cmdUpdate_Click.End
+
+
+Program.Sub.gsLoc_RowCellClick.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Intrinsic.Control.If(v.Args.Column,=,"Delete")
+	f.Data.DataTable.DeleteRow("LOC",v.Args.RowIndex)
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.gsLoc_RowCellClick.End
+
+Program.Sub.gsPL_RowCellClick.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Intrinsic.Control.If(v.Args.Column,=,"Delete")
+	f.Data.DataTable.DeleteRow("PL",v.Args.RowIndex)
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.gsPL_RowCellClick.End
+
+Program.Sub.cmdFromLoc_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sRet)
+
+f.Intrinsic.UI.CommonBrowser(170,"",v.Local.sRet)
+f.Intrinsic.Control.If(v.Local.sRet,<>,"***CANCEL***")
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	gui.Form.txtFromLoc.Text(v.Local.sRet(0))
+	gui.Form.txtToLoc.Text(v.Local.sRet(0))
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdFromLoc_Click.End
+
+Program.Sub.cmdToLoc_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sRet)
+
+f.Intrinsic.UI.CommonBrowser(170,"",v.Local.sRet)
+f.Intrinsic.Control.If(v.Local.sRet,<>,"***CANCEL***")
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	gui.Form.txtToLoc.Text(v.Local.sRet(0))
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdToLoc_Click.End
+
+Program.Sub.cmdAddLoc_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sSQL,sRet)
+
+f.Intrinsic.String.Build("Select Location from V_Locations where Location between '{0}' and '{1}'",v.Screen.Form!txtFromLoc.Text.Trim,v.Screen.Form!txtToLoc.Text.Trim,v.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",v.Local.sSQL)
+f.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	f.Data.DataTable.AddRow("LOC","Loc",v.ODBC.con!rst.FieldValTrim!Location)
+	Function.ODBC.con!rst.Movenext
+f.Intrinsic.Control.Loop
+f.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdAddLoc_Click.End
+
+Program.Sub.cmdFromPL_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sRet)
+
+f.Intrinsic.UI.CommonBrowser(130,"",v.Local.sRet)
+f.Intrinsic.Control.If(v.Local.sRet,<>,"***CANCEL***")
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	gui.Form.txtFromPL.Text(v.Local.sRet(0))
+	gui.Form.txtToPL.Text(v.Local.sRet(0))
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdFromPL_Click.End
+
+Program.Sub.cmdToPL_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sRet)
+
+f.Intrinsic.UI.CommonBrowser(130,"",v.Local.sRet)
+f.Intrinsic.Control.If(v.Local.sRet,<>,"***CANCEL***")
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	gui.Form.txtToPL.Text(v.Local.sRet(0))
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdToPL_Click.End
+
+Program.Sub.cmdAddPL_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sSQL,sRet)
+
+f.Intrinsic.String.Build("Select Product_Line from V_Product_Line where Product_Line between '{0}' and '{1}'",v.Screen.Form!txtFromPL.Text.Trim,v.Screen.Form!txtToPL.Text.Trim,v.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",v.Local.sSQL)
+f.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	f.Data.DataTable.AddRow("PL","PL",v.ODBC.con!rst.FieldValTrim!Product_Line)
+	Function.ODBC.con!rst.Movenext
+f.Intrinsic.Control.Loop
+f.ODBC.con!rst.Close
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdAddPL_Click.End
+
+Program.Sub.cmdPopulate_Click.Start
+'Filter button is clicked
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sSQL)
+v.Local..BulkDeclareLong(i)
+
+'Get LOC list
+f.Intrinsic.Control.If(V.DataView.LOC!LOCDV.Exists)
+	F.Data.DataView.Close("LOC","LOCDV")
+f.Intrinsic.Control.EndIf
+F.Data.DataView.Create("LOC", "LOCDV", 22,"","")
+F.Data.DataView.ToString("LOC","LOCDV","Loc","","','",v.Global.sLoc)
+
+'Get PL list
+f.Intrinsic.Control.If(V.DataView.PL!PLDV.Exists)
+	F.Data.DataView.Close("PL","PLDV")
+f.Intrinsic.Control.EndIf
+F.Data.DataView.Create("PL", "PLDV", 22,"","")
+F.Data.DataView.ToString("PL","PLDV","PL","","','",v.Global.sPL)
+
+f.Intrinsic.String.Build("Select PART_NUMBER, LOCN, STD_COST, ORDER_QTY, RECVD_COST, RECVD_QTY, VARIANCE, RECVD_DATE, PO_NUMBER, RECEIVER_NUMBER, PartLocn, PL from GCG_4869_COPY where LOCN in ('{0}') and PL in ('{1}') order by sequence",v.Global.sLoc,v.Global.sPL,v.Local.sSQL)
+f.Intrinsic.Control.CallSub("Create_Table_D","sSQL",v.Local.sSQL)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdPopulate_Click.End
+
+Program.Sub.cmdCheckAll_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Data.DataTable.SetValue("D",-1,"Update",True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdCheckAll_Click.End
+
+Program.Sub.cmdUnCheckAll_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Data.DataTable.SetValue("D",-1,"Update",False)
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdUnCheckAll_Click.End
+
+
+Program.Sub.cmdOriginal_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+'Get all what we have from the GCG_4869_COPY
+f.Intrinsic.Control.CallSub("Create_Table_D","sSQL","Select PART_NUMBER, LOCN, STD_COST, ORDER_QTY, RECVD_COST, RECVD_QTY, VARIANCE, RECVD_DATE, PO_NUMBER, RECEIVER_NUMBER,PartLocn,PL from GCG_4869_COPY order by sequence")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdOriginal_Click.End
+
+Program.Sub.cmdClearLOC_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Intrinsic.Control.CallSub("Create_Table_Location")
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdClearLOC_Click.End
+
+Program.Sub.cmdClearPL_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError)
+
+f.Intrinsic.Control.CallSub("Create_Table_Product_Line")
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdClearPL_Click.End
+
+Program.Sub.cmdAddAllLoc_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sRet)
+
+f.Intrinsic.Control.CallSub("Create_Table_Location")
+F.ODBC.Connection!con.OpenRecordsetRO("rst","Select Location from V_Locations order by Location")
+f.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	f.Data.DataTable.AddRow("LOC","Loc",v.ODBC.con!rst.FieldValTrim!Location)
+	Function.ODBC.con!rst.Movenext
+f.Intrinsic.Control.Loop
+f.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.cmdAddAllLoc_Click.End
+
+Program.Sub.cmdAddAllPL_Click.Start
+F.Intrinsic.Control.SetErrorHandler("Sub_Err")
+F.Intrinsic.Control.ClearErrors
+v.Local..BulkDeclareString(sError,sRet)
+
+f.Intrinsic.Control.CallSub("Create_Table_Product_Line")
+F.ODBC.Connection!con.OpenRecordsetRO("rst","Select Product_Line from V_Product_Line order by Product_Line")
+f.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	f.Data.DataTable.AddRow("PL","PL",v.ODBC.con!rst.FieldValTrim!Product_Line)
+	Function.ODBC.con!rst.Movenext
+f.Intrinsic.Control.Loop
+f.ODBC.con!rst.Close
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Sub_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdAddAllPL_Click.End
+
+Program.Sub.cmdExport_Click.Start
+F.Intrinsic.Control.Try
+v.Local..BulkDeclareString(sError,sFileExport,sMsg,sDate,sTime)
+v.Local..BulkDeclareBoolean(bExcel)
+
+'Format date time to create file name with extension date time stamp
+f.Intrinsic.String.Format(v.Ambient.Date,"MMDDYYYY",v.Local.sDate)
+f.Intrinsic.String.Format(v.Ambient.Now,"HhNnSs",v.Local.sTime)
+
+F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+F.Intrinsic.Control.If(V.Local.bExcel)
+	F.Intrinsic.String.Build("{0}\Update_Cost_{1}_{2}.xlsx",V.Caller.LocalGssTempDir,v.Local.sDate,v.Local.sTime,V.Local.sFileExport)
+	gui.Form.gsD.Export(V.Local.sFileExport,"xlsx")
+	F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("{0}\Update_Cost_{1}_{2}.csv",V.Caller.LocalGssTempDir,v.Local.sDate,v.Local.sTime,V.Local.sFileExport)
+	Gui.Form.gsD.Export(V.Local.sFileExport,"csv")
+	F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdExport_Click.End
+
